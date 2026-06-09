@@ -3,18 +3,19 @@
 class Filme {
 
     private array $notas;
+    private const float NOTA_MINIMA = 7.5;
 
     public function __construct(
-        private string $nome,
-        private int $anoLancamento,
-        private string $genero
+        public readonly string $nome,
+        public readonly int $anoLancamento,
+        public readonly Genero $genero
     ) {
         $this->notas = [];
     }
 
     public function avalia(float $nota): void 
     {
-        $this->notas[] = $nota;   
+        $this->notas[] = $nota;
     }
 
     public function media(): float
@@ -24,19 +25,9 @@ class Filme {
 
         return $somaNotas / $quantidadeNotas;
     }
-
-    public function anoLancamento(): int
+    
+    public function bom(): bool
     {
-        return $this->anoLancamento;
-    }
-
-    public function nome(): string
-    {
-        return $this->nome;
-    }
-
-    public function genero(): string
-    {
-        return $this->genero;
+        return $this->media() >= self::NOTA_MINIMA;
     }
 }
