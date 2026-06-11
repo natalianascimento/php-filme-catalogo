@@ -30,4 +30,9 @@ class Titulo
     {
         return $this->media() >= self::NOTA_MINIMA;
     }
+
+    public function duracaoEmMinutos(): int
+    {
+        return 0;
+    }
 }
