@@ -1,9 +1,10 @@
 <?php
 
+namespace ScreenMatch\Modelo;
+
 abstract class Titulo implements Avaliavel
 {
-    private array $notas;
-    private const float NOTA_MINIMA = 7.5;
+    use ComAvaliacao;   
 
     public function __construct(
         public readonly string $nome,
@@ -12,24 +13,6 @@ abstract class Titulo implements Avaliavel
     ) {
         $this->notas = [];
     }
-
-    public function avalia(float $nota): void 
-    {
-        $this->notas[] = $nota;
-    }
-
-    public function media(): float
-    {
-        $somaNotas = array_sum($this->notas);
-        $quantidadeNotas = count($this->notas);
-
-        return $somaNotas / $quantidadeNotas;
-    }
-    
-    public function bom(): bool
-    {
-        return $this->media() >= self::NOTA_MINIMA;
-    }
-
+   
     abstract public function duracaoEmMinutos(): int;
 }

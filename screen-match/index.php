@@ -1,13 +1,13 @@
 <?php
 
-require __DIR__ . "/src/Modelo/Avaliavel.php";
-require __DIR__ . "/src/Modelo/Titulo.php";
-require __DIR__ . "/src/Modelo/Genero.php";
-require __DIR__ . "/src/Modelo/Filme.php";
-require __DIR__ . "/src/Modelo/Episodio.php";
-require __DIR__ . "/src/Modelo/Serie.php";
-require __DIR__ . "/src/Calculos/CalculadoraDeMaratona.php";
-require __DIR__ . "/src/Calculos/ConversorNotaEstrela.php";
+require_once 'autoload.php';
+
+use ScreenMatch\Modelo\{
+    Filme, Episodio, Serie, Genero
+};
+use ScreenMatch\Calculos\{
+    CalculadoraDeMaratona, ConversorNotaEstrela
+};
 
 
 echo "Bem-vindo(a) ao screen match!\n";
@@ -29,10 +29,6 @@ var_dump($filme);
 echo $filme->media() . "\n";
 
 echo $filme->anoLancamento . "\n";
-
-var_dump($filme->bom());
-
-echo "\n";
 
 $serie = new Serie(
     "Lost",
